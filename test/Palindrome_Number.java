@@ -1,38 +1,40 @@
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ALL")
-public class Two_Sum {
+public class Palindrome_Number {
 
     @Test
     public void test() {
 
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
+        int x = 121;
+        boolean output = true;
 
-        int[] answer = {0, 1};
-
-        assertArrayEquals(twoSum(nums, target), answer);
+        assertTrue(isPalindrome(x));
     }
 
-    public int[] twoSum(int[] nums, int target) {
+    public boolean isPalindrome(int x) {
 
-        Map<Integer, Integer> numAndIndexMap = new HashMap<>(nums.length);
-        for (int i = 0; i < nums.length; i++) {
-
-            int num = nums[i];
-            if (numAndIndexMap.containsKey(target - num)) {
-                int a = numAndIndexMap.get(target - num);
-                int b = i;
-                return new int[]{a, b};
-            }
-            numAndIndexMap.put(num, i);
+        if (x == 0) {
+            return true;
         }
 
-        return new int[]{0, 0};
+        if (x < 0 || x % 10 == 0) {
+            return false;
+        }
+
+        int r = 0;
+        while (x > r) {
+            int temp = x % 10;
+            x = x / 10;
+            r = r * 10 + temp;
+        }
+
+        if (x == r || r / 10 == x) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
