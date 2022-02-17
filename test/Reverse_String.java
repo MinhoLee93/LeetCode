@@ -10,7 +10,7 @@ public class Reverse_String {
 
         char[] input = String.valueOf("hello").toCharArray();
         char[] output = String.valueOf("olleh").toCharArray();
-        reverseString_2(input);
+        reverseString(input);
     }
 
     public void reverseString(char[] s) {
